@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title th:utext="${title}"></title>
+   </head>
+    
+   <style>
+      table th, table td {
+         padding: 5px;
+      }
+      .message {
+         color: blue;
+      }
+   </style>
+    
+   <body>
+    
+      <!-- Include menu.html -->
+      <th:block th:include="/students_menu"></th:block>  
+       
+      <h2>All Tasks</h2>
+       
+      <table border="1">
+            <tr>
+               <th>Id</th>
+               <th>Student name</th>
+               <th>Address</th>
+               <th>phone</th>
+               <th>Email</th>
+               <th>Gender</th>
+               <th>Action</th>
+            </tr>
+            <tr th:each ="student : ${students}">
+               <td th:utext="${student.id}">...</td>
+               <td th:utext="${student.name}">...</td>
+               <td th:utext="${student.address}">...</td>
+               <td th:utext="${student.phone}">...</td>
+               <td th:utext="${student.email}">...</td>
+               <td th:utext="${student.gender.name}">...</td>
+               <td> <a th:href="'/student/'+${+student.id}" th:utext="${'View/Edit'}"></a></td>
+            </tr>
+      </table>
+       
+   </body>
+</html>
